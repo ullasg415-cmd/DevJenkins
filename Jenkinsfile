@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         maven 'maven'   // change to your configured name
-        jdk 'jdk'       // change to your configured name
+        jdk 'JDK'       // change to your configured name
     }
 
     stages {
