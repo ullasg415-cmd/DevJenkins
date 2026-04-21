@@ -1,31 +1,39 @@
 pipeline {
-    agent any
+    agent any 
 
     tools {
-        maven 'maven'   // change to your configured name
-        jdk 'JDK'       // change to your configured name
+        maven 'maven'  
     }
-
     stages {
-
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/ullasg415-cmd/DevJenkins.git'
+                git branch: 'main', url: 'https://github.com/DakshhBN/Maven.git'
             }
         }
 
-        stage('Build & Test') {
+        stage('Build') {
             steps {
-                sh 'mvn clean install'
+                sh 'mvn clean package'  
             }
         }
 
+        stage('Test') {
+            steps {
+                sh 'mvn test' 
+            }
+        }
+
+        
+        
+       
         stage('Run Application') {
             steps {
-                // Run in background so pipeline doesn't hang
-                sh 'nohup java -jar target/MyMavenApp-1.0-SNAPSHOT.jar &'
+               
+                sh 'java -jar target/SecondProj-1.0-SNAPSHOT.jar'
             }
         }
+
+        
     }
 
     post {
